@@ -1,0 +1,38 @@
+<view class="main">
+    <view class="orders-box">
+        <view class="orders-list" wx:for="{{list.arr}}" wx:for-item="item">
+            <view class="orders-number">{{item.createTime}}
+            <text class="orders-number-right">{{item.orderSN}}</text>
+            <!--<image class="del" src="../../image/del.png"></image>-->
+            </view>
+            <view class="orders-detail" wx:for="{{item.goodlist}}" wx:for-item="goods">
+                <image src="{{goods.img}}"></image>
+                <view class="gname">{{goods.goodsName}}</view>
+                <view class="">￥{{goods.goodsPrice}} X {{goods.num}}                      </view>
+               <!-- <text class="orders-status">￥{{goods.numPrice}}</text>-->
+              
+            </view>
+             <view wx:if="{{item.status}}" class='status'>
+              <view class='statusleft'>
+                  该订单已完成
+                  <image src='../../image/status1.png'></image>
+              </view>
+              <view class='statusright'>
+                  实付款：
+                  <text>￥{{item.goodsAmount}}</text>
+              </view>
+            </view> 
+             <view wx:else class='status'>
+              <view class='statusleft'>
+                  该订单未付款
+                  <image src='../../image/status2.png'></image>
+              </view>
+              <view class='statusright'>
+                  <view class='gopay'>去付款</view>
+              </view>
+            </view> 
+            <view class='fenge'></view>
+        </view>
+  </view>
+</view>
+ 
